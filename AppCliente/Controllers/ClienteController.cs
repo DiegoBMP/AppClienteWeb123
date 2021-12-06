@@ -27,10 +27,10 @@ namespace AppCliente.Controllers
         }
 
         
-        public ActionResult Delete(string DNI)
+        public ActionResult Delete(int ID_CLIENTE)
         {
             NegCliente obj = new NegCliente();
-            obj.Eliminar(DNI);
+            obj.Eliminar(ID_CLIENTE);
             return RedirectToAction("Listar");
         }
 

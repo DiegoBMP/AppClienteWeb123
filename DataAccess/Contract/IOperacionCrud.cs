@@ -10,7 +10,7 @@ namespace DataAccess.Contract
     {
         string Insertar(T dto);
         string Actualizar(T dto);
-        string Eliminar(string dto);
+        string Eliminar(int dto);
         List<T> Listar();
     }
 }

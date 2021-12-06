@@ -17,7 +17,7 @@ namespace Business_Layer
             return dao.Actualizar(dto);
         }
 
-        public string Eliminar(string dto)
+        public string Eliminar(int dto)
         {
             daoCliente dao = new daoCliente();
             return dao.Eliminar(dto);

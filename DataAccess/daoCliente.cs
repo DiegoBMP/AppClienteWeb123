@@ -20,7 +20,7 @@ namespace DataAccess
                 using (OracleConnection cn = new OracleConnection(strOracle))
                 {
                     cn.Open();
-                    using (OracleCommand command = new OracleCommand("SP_1_UPDATE_CLIENTE1", cn))
+                    using (OracleCommand command = new OracleCommand("SP_1_UPDATE_CLIENTE", cn))
                     {
                         command.CommandType = System.Data.CommandType.StoredProcedure;
                         command.Parameters.Add(new OracleParameter("P_ID_CLIENTE", OracleType.Number)).Value = dto.ID_CLIENTE;
@@ -30,7 +30,7 @@ namespace DataAccess
                         command.Parameters.Add(new OracleParameter("P_CELULAR", OracleType.Number)).Value = dto.CELULAR;
                         command.Parameters.Add(new OracleParameter("P_CORREO", OracleType.VarChar)).Value = dto.CORREO;
                         command.Parameters.Add(new OracleParameter("P_DIRECCION", OracleType.VarChar)).Value = dto.DIRECCION;
-                        command.Parameters.Add(new OracleParameter("P_CONTRASEÑA", OracleType.VarChar)).Value = dto.CLAVE;
+                        command.Parameters.Add(new OracleParameter("P_CLAVE", OracleType.VarChar)).Value = dto.CLAVE;
                         command.Parameters.Add(new OracleParameter("P_RESULT", OracleType.VarChar, 50)).Direction = System.Data.ParameterDirection.Output;
                         command.ExecuteNonQuery();
                         result = Convert.ToString(command.Parameters["P_RESULT"].Value);
@@ -45,7 +45,7 @@ namespace DataAccess
             return result;
         }
 
-        public string Eliminar(string dto)
+        public string Eliminar(int dto)
         {
             string result = string.Empty;
             try
@@ -79,10 +79,10 @@ namespace DataAccess
                 using (OracleConnection cn = new OracleConnection(strOracle))
                 {
                     cn.Open();
-                    using (OracleCommand command = new OracleCommand("SP_1_INSERT_CLIENTE", cn))
+                    using (OracleCommand command = new OracleCommand("SP_REGISTRO", cn))
                     {
                         command.CommandType = System.Data.CommandType.StoredProcedure;
-                        command.Parameters.Add(new OracleParameter("P_ID_CLIENTE", OracleType.Number)).Value = dto.ID_CLIENTE;
+                        //command.Parameters.Add(new OracleParameter("P_ID_CLIENTE", OracleType.Number)).Value = dto.ID_CLIENTE;
                         command.Parameters.Add(new OracleParameter("P_NOMBRES", OracleType.VarChar)).Value = dto.NOMBRES;
                         command.Parameters.Add(new OracleParameter("P_APELLIDOS", OracleType.VarChar)).Value = dto.APELLIDOS;
                         command.Parameters.Add(new OracleParameter("P_RUT", OracleType.VarChar)).Value = dto.RUT;
